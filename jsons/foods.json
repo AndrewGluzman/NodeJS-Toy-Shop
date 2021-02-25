@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "602108d18203f64730441f58"
+  },
+  "date_created": {
+    "$date": "2021-02-08T09:44:21.453Z"
+  },
+  "name": "pizza",
+  "img": "https://images.pexels.com/photos/1049626/pexels-photo-1049626.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  "cal": 600,
+  "price": 30,
+  "user_id": "6020ed5a6457ff3c6cd190ec",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60210a188203f64730441f59"
+  },
+  "date_created": {
+    "$date": "2021-02-08T09:44:21.453Z"
+  },
+  "name": "pasta",
+  "img": "https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  "cal": 500,
+  "price": 40,
+  "user_id": "6020ed5a6457ff3c6cd190ec",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60210bcf07021136783239d0"
+  },
+  "date_created": {
+    "$date": "2021-02-08T10:00:41.195Z"
+  },
+  "name": "green pasta",
+  "img": "https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  "cal": 400,
+  "price": 45,
+  "user_id": "6020ed5a6457ff3c6cd190ec",
+  "__v": 0
+}]
