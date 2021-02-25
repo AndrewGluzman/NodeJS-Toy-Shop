@@ -10,12 +10,13 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <!-- 14:55 -->
   <body>
     <div class="container">
-      <h1>Work from public</h1>
+      <h1>Documentation</h1>
       <h2>Routes</h2>
       <p>
         All HTTP methods are supported. You can use http or https for your
@@ -23,17 +24,66 @@
       </p>
       <ul>
         <li>
-          https://wolt2023.herokuapp.com/food (GET)- return 10 documents of food
-        </li>
-        <li>
-          https://wolt2023.herokuapp.com/food (POST)- Add new item of food to
-          document
+          <span>https://toys4sale.herokuapp.com/toys?page=1</span> (GET)-
+          <strong>returns 10 entries</strong>
+          of toys for 1 page of entries
           <ul>
             <li>
-              Client need to send in body data: name,price,cal , client also can
-              send img (not required)
+              Client may <strong>limit</strong> number of entries by seting it
+              after /limit/"yourqueryhere"?page=1. e.g 5 entries:
+              <span>https://toys4sale.herokuapp.com/toys/limit/5?page=1</span
+              >this way client may get 5 entrie on each page.
             </li>
           </ul>
+        </li>
+        <li>
+          <span>https://toys4sale.herokuapp.com/toys/s/?q="yourqueryhere"</span>
+          (GET)- Gives an option to <strong>search</strong> specific toy by name
+          and description
+        </li>
+        <li>
+          <span>https://toys4sale.herokuapp.com/toys/cat/"categoryname"</span>
+          (GET)- Gives an option to look for toys in
+          <strong>specific toy category</strong>. There is three options girls,
+          boys and sport.
+        </li>
+        <li>
+          <span
+            >https://toys4sale.herokuapp.com/toys/prices/?min=0&max=1000</span
+          >
+          (GET)- Gives an option to look for toys
+          <strong>with specific toy price range</strong>. client must give
+          parameters to min and max properties.
+        </li>
+        <li>
+          In order to <strong>add new toy</strong> client need send (POST)
+          request to main adress<span>
+            https://toys4sale.herokuapp.com/toys/</span
+          >
+          as following example { "name": "smartphone", "info": "apple",
+          "category": "girls", "img_url":
+          "https://images.pexels.com/photos/187329/pexels-photo-187329.jpeg",
+          "price": 900 } Authotication token needed in order to fulfill addition
+          request. Client must include the authotication token in header inside
+          the request.
+        </li>
+        <li>
+          In order to <strong>update existing toy</strong> client need send
+          (PUT) request to main adress providing the id of the item you need to
+          update
+          <span>https://toys4sale.herokuapp.com/toys/"itemforupdateID"</span> as
+          following with the property changed: example { "name": "tv", "info":
+          "sony", "category": "girls", "img_url":
+          "https://images.pexels.com/photos/187329/pexels-photo-187329.jpeg",
+          "price": 900 } Authotication token needed in order to fulfill update
+          request. Client must include the authotication token in header inside
+          the request.
+        </li>
+        <li>
+          For Deletition of a toy client must provide id of the item as follows
+          <span>https://toys4sale.herokuapp.com/toys/"itemforDELETEID"</span>
+          Authotication token needed in order to fulfill update request. Client
+          must include the authotication token in header inside the request.
         </li>
       </ul>
     </div>

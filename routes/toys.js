@@ -4,9 +4,25 @@ const { ToyModel, validToy } = require("../models/toyModel");
 const router = express.Router();
 
 /* GET home page. */
-router.get("/", async (req, res) => {
+router.get("/limit/:limitquery", async (req, res) => {
+  let limitNumber = Number(req.params.limitquery);
+  // let perPage = 10;
+  let page = req.query.page - 1;
   try {
-    let data = await ToyModel.find({}).limit(10);
+    let data = await ToyModel.find({})
+      .limit(limitNumber ? limitNumber : 10)
+      .skip(limitNumber * page);
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
+router.get("/", async (req, res) => {
+  let perPage = 10;
+  let page = req.query.page - 1;
+  try {
+    let data = await ToyModel.find({}).skip(perPage * page);
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -14,9 +30,11 @@ router.get("/", async (req, res) => {
   }
 });
 router.get("/cat/:catname", async (req, res) => {
+  let perPage = 10;
+  let page = req.query.page - 1;
   let catPar = req.params.catname;
   try {
-    let data = await ToyModel.find({ category: catPar }).limit(10);
+    let data = await ToyModel.find({ category: catPar }).skip(perPage * page);
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -26,11 +44,13 @@ router.get("/cat/:catname", async (req, res) => {
 
 router.get("/s", async (req, res) => {
   let searchQ = req.query.q;
+  let perPage = 10;
+  let page = req.query.page - 1;
   try {
     let searchRegQ = new RegExp(searchQ, "i");
     let data = await ToyModel.find({
       $or: [{ name: searchRegQ }, { info: searchRegQ }],
-    }).limit(10);
+    }).skip(perPage * page);
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -38,6 +58,8 @@ router.get("/s", async (req, res) => {
   }
 });
 router.get("/prices", async (req, res) => {
+  let perPage = 10;
+  let page = req.query.page - 1;
   let minPrice = Number(req.query.min);
   let maxPrice = Number(req.query.max);
   try {
@@ -45,7 +67,7 @@ router.get("/prices", async (req, res) => {
       .where("price")
       .gt(minPrice)
       .lt(maxPrice)
-      .limit(10);
+      .skip(perPage * page);
     res.json(data);
   } catch (err) {
     console.log(err);
